@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Display</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div id="userData"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const storedData = localStorage.getItem('userData');
+
+            if (storedData) {
+                const userData = JSON.parse(storedData);
+                const userDataContainer = document.getElementById('userData');
+                userDataContainer.innerHTML = `
+                    <p>WELCOME, ${userData.name}</p>
+                    <p>ID: ${userData.id}</p>
+                    <p>Name: ${userData.name}</p>
+                    <p>Username: ${userData.username}</p>
+                    <p>Password: ${userData.password}</p>
+                    <p>Email: ${userData.email}</p>
+                    <p>Date Of Birth: ${userData.dob}</p>
+                    <p>Gender: ${userData.gender}</p>
+                    <p>Address: ${userData.address}</p>
+                    <p>City: ${userData.city}</p>
+                    <p>Pin Code: ${userData.pinCode}</p>
+                    <p>Hobby: ${userData.hobby}</p>
+                    
+                    <!-- Add other fields as needed -->
+                `;
+            } else {
+                document.getElementById('userData').innerHTML = '<p>No user data found.</p>';
+            }
+        });
+    </script>
+</body>
+
+</html>
